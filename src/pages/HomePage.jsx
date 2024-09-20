@@ -1,3 +1,4 @@
+import Loader from 'components/Loader/Loader';
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { fetchTrendingMovies } from 'services/api';
@@ -10,7 +11,7 @@ const STATUS = {
 };
 
 const HomePage = () => {
-  const [_, setStatus] = useState(STATUS.IDLE);
+  const [status, setStatus] = useState(STATUS.IDLE);
   const [movies, setMovies] = useState([]);
 
   useEffect(() => {
@@ -34,6 +35,7 @@ const HomePage = () => {
   return (
     <div>
       <h2>Trending today</h2>
+      {status === STATUS.PENDING && <Loader />}
       <ul>
         {movies.length > 0 ? (
           movies.map(({ id, title }) => (
