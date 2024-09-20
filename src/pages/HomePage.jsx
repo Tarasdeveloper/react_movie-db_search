@@ -10,7 +10,7 @@ const STATUS = {
 };
 
 const HomePage = () => {
-  const [status, setStatus] = useState(STATUS.IDLE);
+  const [setStatus] = useState(STATUS.IDLE);
   const [movies, setMovies] = useState([]);
 
   useEffect(() => {
