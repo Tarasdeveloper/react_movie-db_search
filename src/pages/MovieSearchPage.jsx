@@ -1,3 +1,4 @@
+import Loader from 'components/Loader/Loader';
 import React, { useEffect, useState } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
 import { fetchSearchMovies } from 'services/api';
@@ -69,6 +70,7 @@ const MovieSearchPage = () => {
         />
         <button type="submit">Search</button>
       </form>
+      {status === STATUS.PENDING && <Loader />}
       <ul>
         {movies.length > 0 ? (
           movies.map(({ id, title }) => (
