@@ -65,7 +65,7 @@ const MovieSearchPage = () => {
           type="text"
           name="search"
           // value={query}
-          placeholder="Enter movie..."
+          placeholder="Enter movie name..."
           // onChange={handleInput}
         />
         <button type="submit">Search</button>

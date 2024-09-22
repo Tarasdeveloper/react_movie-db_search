@@ -40,7 +40,7 @@ export const fetchMovieCredits = async movieId => {
     `${BASE_URL}/3/movie/${movieId}/credits?language=en-US`,
     options
   );
-  return data;
+  return data.cast;
 };
 // reviews request /movies/get-movie-reviews
 export const fetchMovieReviews = async movieId => {
@@ -48,5 +48,5 @@ export const fetchMovieReviews = async movieId => {
     `${BASE_URL}/3/movie/${movieId}/reviews?language=en-US`,
     options
   );
-  return data;
+  return data.reviews;
 };
