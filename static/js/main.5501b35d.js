@@ -1,4 +1,4 @@
-/*! For license information please see main.76e3a53f.js.LICENSE.txt */
+/*! For license information please see main.5501b35d.js.LICENSE.txt */
 (()=>{var e={307:(e,t,n)=>{"use strict";n.d(t,{A:()=>p});var r=n(579),a=(n(43),n(464));const o="#4fa94d",i={"aria-busy":!0,role:"progressbar"},l=a.Ay.div`
   display: ${e=>e.$visible?"flex":"none"};
 `,u=242.776657104492,s=a.i7`
@@ -106,5 +106,5 @@ to {
   &:hover {
     text-decoration: underline;
   }
-`,v=()=>(0,s.jsxs)(p,{children:[(0,s.jsx)("header",{children:(0,s.jsxs)(m,{children:[(0,s.jsx)(g,{to:"/",children:"Home"}),(0,s.jsx)(g,{to:"/movies",children:"Movies"})]})}),(0,s.jsx)("main",{children:(0,s.jsx)(e.Suspense,{fallback:(0,s.jsx)(a.A,{}),children:(0,s.jsx)(r.sv,{})})})]}),y=(0,e.lazy)((()=>n.e(44).then(n.bind(n,44)))),b=(0,e.lazy)((()=>n.e(42).then(n.bind(n,42)))),w=(0,e.lazy)((()=>n.e(989).then(n.bind(n,989)))),S=()=>(0,s.jsx)(e.Suspense,{fallback:(0,s.jsx)(a.A,{}),children:(0,s.jsx)(r.BV,{children:(0,s.jsxs)(r.qh,{path:"/",element:(0,s.jsx)(v,{}),children:[(0,s.jsx)(r.qh,{index:!0,element:(0,s.jsx)(w,{})}),(0,s.jsx)(r.qh,{path:"/movies",element:(0,s.jsx)(y,{})}),(0,s.jsxs)(r.qh,{path:"/movies/:movieId",element:(0,s.jsx)(b,{}),children:[(0,s.jsx)(r.qh,{path:"cast",element:(0,s.jsx)(c,{})}),(0,s.jsx)(r.qh,{path:"reviews",element:(0,s.jsx)(f,{})})]}),(0,s.jsx)(r.qh,{path:"*",element:(0,s.jsx)("p",{children:"Page not found !!!"})})]})})});t.createRoot(document.getElementById("root")).render((0,s.jsx)(e.StrictMode,{children:(0,s.jsx)(h.Kd,{children:(0,s.jsx)(S,{})})}))})()})();
-//# sourceMappingURL=main.76e3a53f.js.map
+`,v=()=>(0,s.jsxs)(p,{children:[(0,s.jsx)("header",{children:(0,s.jsxs)(m,{children:[(0,s.jsx)(g,{to:"/",children:"Home"}),(0,s.jsx)(g,{to:"/movies",children:"Movies"})]})}),(0,s.jsx)("main",{children:(0,s.jsx)(e.Suspense,{fallback:(0,s.jsx)(a.A,{}),children:(0,s.jsx)(r.sv,{})})})]}),y=(0,e.lazy)((()=>n.e(44).then(n.bind(n,44)))),b=(0,e.lazy)((()=>n.e(42).then(n.bind(n,42)))),w=(0,e.lazy)((()=>n.e(989).then(n.bind(n,989)))),S=()=>(0,s.jsx)(e.Suspense,{fallback:(0,s.jsx)(a.A,{}),children:(0,s.jsx)(r.BV,{children:(0,s.jsxs)(r.qh,{path:"/",element:(0,s.jsx)(v,{}),children:[(0,s.jsx)(r.qh,{index:!0,element:(0,s.jsx)(w,{})}),(0,s.jsx)(r.qh,{path:"/movies",element:(0,s.jsx)(y,{})}),(0,s.jsxs)(r.qh,{path:"/movies/:movieId",element:(0,s.jsx)(b,{}),children:[(0,s.jsx)(r.qh,{path:"cast",element:(0,s.jsx)(c,{})}),(0,s.jsx)(r.qh,{path:"reviews",element:(0,s.jsx)(f,{})})]}),(0,s.jsx)(r.qh,{path:"*",element:(0,s.jsx)("p",{children:"Page not found !!!"})})]})})});t.createRoot(document.getElementById("root")).render((0,s.jsx)(e.StrictMode,{children:(0,s.jsx)(h.Kd,{basename:"/react_movie-db_search",children:(0,s.jsx)(S,{})})}))})()})();
+//# sourceMappingURL=main.5501b35d.js.map
