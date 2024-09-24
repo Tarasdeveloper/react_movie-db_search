@@ -1,7 +1,8 @@
 import Loader from 'components/Loader/Loader';
-import React, { Suspense, useEffect, useState } from 'react';
-import { Link, Outlet, useParams } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 import { fetchMovieDetails } from 'services/api';
+import { DetailsDiv } from './MovieDetails.styled';
 
 const MovieDetails = () => {
   const [movieDetails, setMovieDetails] = useState(null);
@@ -11,7 +12,7 @@ const MovieDetails = () => {
   const score = movieDetails ? Math.round(movieDetails.vote_average * 10) : 0;
   const overview = movieDetails ? movieDetails.overview : '';
   const genresArray = movieDetails
-    ? movieDetails.genres.map(gen => gen.name).join(', ')
+    ? movieDetails.genres.map(genre => genre.name).join(', ')
     : '';
 
   useEffect(() => {
@@ -36,48 +37,31 @@ const MovieDetails = () => {
   }, [movieId]);
 
   if (!movieDetails) {
-    return <p>Loading...</p>;
+    return <Loader />;
   }
 
   return (
-    <div>
+    <DetailsDiv>
+      <img
+        src={
+          movieDetails.poster_path
+            ? `https://image.tmdb.org/t/p/w300${movieDetails.poster_path}`
+            : `https://upload.wikimedia.org/wikipedia/commons/thumb/f/f9/No-image-available.jpg/250px-No-image-available.jpg`
+        }
+        alt={movieDetails.title}
+      />
+
       <div>
-        <div>
-          <img
-            src={
-              movieDetails.poster_path
-                ? `https://image.tmdb.org/t/p/w300${movieDetails.poster_path}`
-                : `https://upload.wikimedia.org/wikipedia/commons/thumb/f/f9/No-image-available.jpg/250px-No-image-available.jpg`
-            }
-            alt={movieDetails.title}
-          />
-        </div>
-        <div>
-          <h2>
-            {movieDetails.title} ({date})
-          </h2>
-          <p>User Score: {score}%</p>
-          <h3>Overview</h3>
-          <p>{overview}</p>
-          <h3>Genres</h3>
-          <p>{genresArray}</p>
-        </div>
+        <h2>
+          {movieDetails.title} ({date})
+        </h2>
+        <p>User Score: {score ? score : 'no score'} %</p>
+        <h3>Overview</h3>
+        <p>{overview}</p>
+        <h3>Genres</h3>
+        <p>{genresArray}</p>
       </div>
-      <div>
-        <h4>Additional information</h4>
-        <ul>
-          <li>
-            <Link to="cast">Cast</Link>
-          </li>
-          <li>
-            <Link to="reviews">Reviews</Link>
-          </li>
-        </ul>
-        <Suspense fallback={<Loader />}>
-          <Outlet />
-        </Suspense>
-      </div>
-    </div>
+    </DetailsDiv>
   );
 };
 

@@ -1,6 +1,8 @@
+import Loader from 'components/Loader/Loader';
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { fetchMovieCredits } from 'services/api';
+import { CastList, CastListItem } from './Cast.styled';
 
 const Cast = () => {
   const [credits, setCredits] = useState([]);
@@ -26,15 +28,19 @@ const Cast = () => {
     fetchMovieData();
   }, [movieId]);
 
-  if (!credits || credits.length === 0) {
-    return <p>Loading...</p>;
+  if (!credits) {
+    return <Loader />;
+  }
+
+  if (credits.length === 0) {
+    return <p>We don't have any cast for this movie.</p>;
   }
 
   return (
-    <ul>
+    <CastList>
       {credits.map(({ id, name, profile_path, character }) => {
         return (
-          <li key={id}>
+          <CastListItem key={id}>
             <img
               src={
                 profile_path
@@ -46,12 +52,12 @@ const Cast = () => {
 
             {/* <h2>{name ? name : 'Without  name'}</h2> */}
             <h4>
-              {name || 'Without name'} / {character}
+              Character: {name || 'Without name'} / {character}
             </h4>
-          </li>
+          </CastListItem>
         );
       })}
-    </ul>
+    </CastList>
   );
 };
 

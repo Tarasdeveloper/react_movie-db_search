@@ -1,6 +1,7 @@
 import Loader from 'components/Loader/Loader';
+import MovieSearchForm from 'components/MovieSearchForm/MovieSearchForm';
 import React, { useEffect, useState } from 'react';
-import { Link, useSearchParams } from 'react-router-dom';
+import { Link, useLocation, useSearchParams } from 'react-router-dom';
 import { fetchSearchMovies } from 'services/api';
 
 const STATUS = {
@@ -14,6 +15,7 @@ const MovieSearchPage = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const [movies, setMovies] = useState([]);
   const [status, setStatus] = useState(STATUS.IDLE);
+  const location = useLocation();
 
   useEffect(() => {
     const currentQuery = searchParams.get('query');
@@ -39,20 +41,9 @@ const MovieSearchPage = () => {
         // setError(error.message);
       }
     };
+
     searchMovieId();
   }, [searchParams]);
-
-  const handleSubmit = e => {
-    e.preventDefault();
-    const queryValue = e.target.elements.search.value.trim(); // Получаем значение поля
-    if (queryValue) {
-      setSearchParams({ query: queryValue }); // Передаем значение как строку
-    }
-  };
-
-  // const handleInput = e => {
-  //   setQuery(e.target.value.toLowerCase().trim());
-  // };
 
   useEffect(() => {
     movies && setStatus(STATUS.RESOLVED);
@@ -60,22 +51,15 @@ const MovieSearchPage = () => {
 
   return (
     <div>
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          name="search"
-          // value={query}
-          placeholder="Enter movie name..."
-          // onChange={handleInput}
-        />
-        <button type="submit">Search</button>
-      </form>
+      <MovieSearchForm />
       {status === STATUS.PENDING && <Loader />}
       <ul>
         {movies.length > 0 ? (
           movies.map(({ id, title }) => (
             <li key={id}>
-              <Link to={`${id}`}>{title ? title : 'No tittle'}</Link>
+              <Link to={`${id}`} state={{ from: location }}>
+                {title ? title : 'No tittle'}
+              </Link>
             </li>
           ))
         ) : (
