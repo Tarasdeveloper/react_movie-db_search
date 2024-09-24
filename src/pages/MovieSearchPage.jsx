@@ -26,50 +26,37 @@ const MovieSearchPage = () => {
 
       try {
         const data = await fetchSearchMovies(currentQuery);
-        setMovies(data);
-        setStatus(STATUS.RESOLVED);
-        // setError('');
 
         if (data.length === 0) {
-          setMovies([]);
-          // setError("No movies found.");
           setStatus(STATUS.REJECTED);
+          setMovies([]);
           return;
         }
+        setMovies(data);
+        setStatus(STATUS.RESOLVED);
       } catch (error) {
         setStatus(STATUS.REJECTED);
-        // setError(error.message);
       }
     };
 
     searchMovieId();
   }, [searchParams]);
 
-  useEffect(() => {
-    movies && setStatus(STATUS.RESOLVED);
-  }, [movies]);
-
-  // if (movies.length === 0) {
-  //   return <p>We don't have any movie.</p>;
-  // }
-
   return (
     <div>
       <MovieSearchForm />
       {status === STATUS.PENDING && <Loader />}
       <ul>
-        {movies.length > 0 ? (
+        {movies.length > 0 &&
           movies.map(({ id, title }) => (
             <li key={id}>
               <Link to={`${id}`} state={{ from: location }}>
                 {title ? title : 'No tittle'}
               </Link>
             </li>
-          ))
-        ) : (
-          <p>No movies found</p>
-        )}
+          ))}
       </ul>
+      {status === STATUS.REJECTED && <p>No movies found</p>}
     </div>
   );
 };

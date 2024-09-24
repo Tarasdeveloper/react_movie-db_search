@@ -12,17 +12,11 @@ const MovieSearchForm = () => {
     setSearchParams({ query: queryValue }); // Передаем значение как строку
   };
 
-  // const handleInput = e => {
-  //   setQuery(e.target.value.toLowerCase().trim());
-  // };
-
   return (
     <form onSubmit={handleSubmit}>
       <MovieInput
         type="text"
         name="search"
-        // value={query}
-        // onChange={handleInput}
         placeholder="Enter movie name..."
         required
       />
