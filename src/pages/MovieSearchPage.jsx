@@ -12,7 +12,7 @@ const STATUS = {
 };
 
 const MovieSearchPage = () => {
-  const [searchParams, setSearchParams] = useSearchParams();
+  const [searchParams] = useSearchParams();
   const [movies, setMovies] = useState([]);
   const [status, setStatus] = useState(STATUS.IDLE);
   const location = useLocation();
@@ -32,7 +32,7 @@ const MovieSearchPage = () => {
 
         if (data.length === 0) {
           setMovies([]);
-          // setError("Movie don't find.");
+          // setError("No movies found.");
           setStatus(STATUS.REJECTED);
           return;
         }
@@ -48,6 +48,10 @@ const MovieSearchPage = () => {
   useEffect(() => {
     movies && setStatus(STATUS.RESOLVED);
   }, [movies]);
+
+  // if (movies.length === 0) {
+  //   return <p>We don't have any movie.</p>;
+  // }
 
   return (
     <div>

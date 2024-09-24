@@ -3,7 +3,7 @@ import { useSearchParams } from 'react-router-dom';
 import { FormBtn, MovieInput } from './MovieSearchForm.styled';
 
 const MovieSearchForm = () => {
-  const [searchParams, setSearchParams] = useSearchParams();
+  const [, setSearchParams] = useSearchParams();
 
   const handleSubmit = e => {
     e.preventDefault();
