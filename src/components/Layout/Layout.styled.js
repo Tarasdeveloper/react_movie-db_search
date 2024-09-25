@@ -13,7 +13,7 @@ export const StyledNavLink = styled(NavLink)`
   font-size: 20px;
 
   &.active {
-    color: #db123f;
+    color: #db122f;
   }
 
   &:hover {
